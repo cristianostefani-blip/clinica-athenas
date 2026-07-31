@@ -1,56 +1,65 @@
 "use client";
 
-import { ArrowRight, Sparkles } from "lucide-react";
-import { Montserrat } from "next/font/google";
-import { WhatsAppButton } from "@/components/WhatsAppButton"; // 1. Importamos o Super Botão
+import { motion } from "framer-motion";
+import { Sparkles } from "lucide-react";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 
-const montserrat = Montserrat({ subsets: ["latin"], weight: ["400", "500", "700", "800"] });
+// ==========================================
+// A FÁBRICA: COPY SEGURA PARA ADS (WHITE FLAG)
+// ==========================================
+const CTA_CONTENT = {
+  title: "Conheça Nossas Especialistas",
+  description: "Profissionais altamente qualificadas, dedicadas a proporcionar a melhor experiência de relaxamento e renovação para o seu corpo e mente.",
+};
 
-export const TeamCTA = () => {
+export function TeamCTA() {
   return (
-    <section id="especialistas" className={`relative py-16 md:py-24 overflow-hidden border-y border-[#d4af37]/30 ${montserrat.className}`}>
+    <section className="relative w-full py-24 bg-zinc-950 overflow-hidden flex items-center justify-center">
       
-      {/* 1. FUNDO OURO PURO (Gold Gradient) */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#d4af37] via-[#e5c76b] to-[#b8860b]" />
-      
-      {/* 2. CAMADA DE BRILHO (Shimmer Animation - reflexo no ouro) */}
-      <div 
-        className="absolute inset-0 bg-[linear-gradient(110deg,transparent_25%,rgba(255,255,255,0.6)_50%,transparent_75%)] bg-[length:250%_100%] opacity-50"
-        style={{ animation: "shimmer 3s linear infinite" }}
-      />
+      {/* Efeito de Fundo - Glow Subtil */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="w-[600px] h-[600px] bg-emerald-900/10 blur-[150px] rounded-full" />
+      </div>
 
-      <div className="max-w-6xl mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center justify-between gap-10">
+      <div className="relative z-10 w-full max-w-4xl mx-auto px-6 lg:px-8">
         
-        {/* Bloco de Textos (Alto Contraste) */}
-        <div className="text-center md:text-left flex-1">
-          <div className="flex items-center justify-center md:justify-start gap-2 mb-3">
-            <Sparkles className="text-[#0a0806] h-5 w-5 animate-pulse" />
-            <span className="text-[#0a0806] font-bold tracking-widest text-xs uppercase">Atendimento Premium</span>
+        {/* Card Premium em Glassmorphism */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="relative p-8 md:p-14 rounded-[2.5rem] bg-gradient-to-br from-zinc-900/80 to-zinc-950/80 backdrop-blur-md border border-zinc-800/50 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-10 overflow-hidden"
+        >
+          {/* Shimmer Overlay no Card */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full animate-[shimmer_3s_infinite] pointer-events-none" />
+
+          <div className="flex-1 text-center md:text-left">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-800/50 border border-zinc-700/50 text-zinc-300 text-xs font-medium uppercase tracking-wider mb-6">
+              <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
+              <span>Atendimento Exclusivo</span>
+            </div>
+            
+            <h2 className="text-3xl md:text-4xl font-light text-white tracking-tight mb-4">
+              {CTA_CONTENT.title}
+            </h2>
+            
+            <p className="text-zinc-400 text-lg leading-relaxed max-w-xl">
+              {CTA_CONTENT.description}
+            </p>
+          </div>
+
+          {/* O NOVO COMPONENTE WHATSAPP COM A API CORRETA */}
+          <div className="shrink-0 w-full md:w-auto">
+            <WhatsAppButton 
+              buttonLocation="cta_ouro_ver_terapeutas" 
+              label="Ver Disponibilidade" 
+              className="w-full md:w-auto px-10 py-5 text-lg"
+            />
           </div>
           
-          {/* Título Preto Ônix para máxima leitura no Ouro */}
-          <h3 className="text-3xl md:text-4xl lg:text-5xl text-[#0a0806] mb-4 font-extrabold tracking-tight drop-shadow-sm">
-            Equipe altamente selecionada.
-          </h3>
-          
-          <p className="text-[#1a1510] font-medium text-base md:text-lg max-w-lg leading-relaxed mx-auto md:mx-0">
-            Nossa equipe é formada por especialistas. Segurança, técnica apurada e acolhimento absoluto em cada sessão.
-          </p>
-        </div>
-
-        {/* 2. O SUPER BOTÃO EM AÇÃO (Sem gambiarras de URL) */}
-        <div className="shrink-0">
-          <WhatsAppButton 
-            location="cta_ouro_ver_terapeutas"
-            baseMessage="Olá! Gostaria de ver as especialistas disponíveis hoje."
-            className="inline-flex items-center justify-center rounded-full px-10 py-5 bg-[#0a0806] text-[#d4af37] hover:bg-[#12100d] hover:scale-105 transition-all duration-300 shadow-2xl uppercase tracking-widest text-xs font-bold border border-[#d4af37]/30 group"
-          >
-            Ver Terapeutas 
-            <ArrowRight className="ml-3 h-5 w-5 text-[#d4af37] group-hover:translate-x-1 transition-transform duration-300" />
-          </WhatsAppButton>
-        </div>
-
+        </motion.div>
       </div>
     </section>
   );
-};
+}
