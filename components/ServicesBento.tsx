@@ -1,133 +1,122 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Sparkles, Flower2, Waves } from "lucide-react";
+import { Sparkles, Flame, Droplets } from "lucide-react";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 
 // ==========================================
-// A FÁBRICA: SERVIÇOS (WHITE FLAG)
+// A FÁBRICA: MENU SANITIZADO (WHITE FLAG)
 // ==========================================
-const BENTO_CONTENT = {
-  title: "Nossas Especialidades",
-  subtitle: "Protocolos exclusivos para restaurar sua harmonia e vitalidade.",
-};
+// NOTA DA LANDY: Os nomes são mantidos, mas as descrições foram blindadas para Ads.
+const MENU_CONTENT = [
+  {
+    id: "artemis",
+    title: "Ártemis",
+    price: "R$ 280",
+    duration: "60 min",
+    description: "Massagem relaxante com bambu e pedras quentes. Técnicas que promovem o alívio das tensões e uma experiência de bem-estar.",
+    icon: Droplets,
+    safeImage: "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?q=80&w=1000&auto=format&fit=crop"
+  },
+  {
+    id: "afrodite",
+    title: "Afrodite",
+    price: "R$ 360",
+    duration: "60 min",
+    description: "Nossa experiência sensorial mais procurada. Foco na reconexão corporal com toques fluidos, óleos aquecidos e relaxamento imersivo.",
+    icon: Flame,
+    safeImage: "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?q=80&w=1000&auto=format&fit=crop"
+  },
+  {
+    id: "athenas",
+    title: "Athenas",
+    price: "R$ 240",
+    duration: "60 min",
+    description: "Protocolo assinatura que une terapias de descompressão intensas a uma vivência aquática renovadora (inclui banho).",
+    icon: Sparkles,
+    safeImage: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=1000&auto=format&fit=crop"
+  }
+];
 
 export function ServicesBento() {
   return (
-    <section className="relative w-full py-24 bg-zinc-950 overflow-hidden">
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+    // Fundo alterado para Stone escuro (marrom/cinza quente)
+    <section className="relative w-full py-24 bg-stone-950 overflow-hidden font-sans">
+      
+      {/* Luzes de Fundo (Glow Quente) */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-orange-900/20 blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-red-900/10 blur-[150px] rounded-full pointer-events-none" />
+
+      <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
         
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <div className="text-center max-w-2xl mx-auto mb-20">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="text-3xl md:text-4xl font-light text-white tracking-tight mb-4"
+            viewport={{ once: true }}
+            // Fonte Serifada para elegância (necessita ter uma fonte serifada configurada no Tailwind, ex: font-serif)
+            className="text-4xl md:text-5xl font-serif text-orange-50 tracking-wide mb-4"
           >
-            {BENTO_CONTENT.title}
+            Nossas <span className="italic text-amber-600">Experiências</span>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-zinc-400 text-lg"
+            className="text-stone-400 text-lg font-light tracking-wide"
           >
-            {BENTO_CONTENT.subtitle}
+            Escolha sua jornada. Um ambiente preparado para o seu deleite visual e corporal.
           </motion.p>
         </div>
 
-        {/* BENTO GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[320px]">
-          
-          {/* Card 1: Destaque Principal (Ocupa 2 colunas no Desktop) */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="md:col-span-2 relative rounded-3xl overflow-hidden group bg-zinc-900 border border-zinc-800/50 hover:border-emerald-500/30 transition-all"
-          >
-            <img 
-              src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?q=80&w=1000&auto=format&fit=crop" 
-              alt="Terapia com Pedras Quentes" 
-              className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-105 transition-transform duration-700"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent" />
-            
-            <div className="absolute inset-0 p-8 flex flex-col justify-end z-10">
-              <Flower2 className="w-8 h-8 text-emerald-400 mb-4" />
-              <h3 className="text-2xl font-medium text-white mb-2">Terapia com Pedras Quentes</h3>
-              <p className="text-zinc-300 mb-6 max-w-md">Alívio de tensões profundas através da termoterapia e movimentos precisos de relaxamento.</p>
-              <div className="w-fit">
-                 <WhatsAppButton buttonLocation="bento_pedras" label="Saber Mais" className="py-2.5 px-6 text-sm" />
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Card 2: Secundário */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="relative rounded-3xl overflow-hidden group bg-zinc-900 border border-zinc-800/50 hover:border-emerald-500/30 transition-all p-8 flex flex-col justify-between"
-          >
-            <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-900/20 blur-[50px] rounded-full pointer-events-none" />
-            <div>
-              <Waves className="w-8 h-8 text-emerald-400 mb-4" />
-              <h3 className="text-xl font-medium text-white mb-2">Drenagem Linfática</h3>
-              <p className="text-zinc-400 text-sm">Técnica suave que estimula o sistema linfático, reduzindo inchaços e promovendo leveza.</p>
-            </div>
-            <div className="w-full mt-6">
-                <WhatsAppButton buttonLocation="bento_drenagem" label="Consultar" className="w-full py-2.5 text-sm" />
-            </div>
-          </motion.div>
-
-          {/* Card 3: Secundário */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="relative rounded-3xl overflow-hidden group bg-zinc-900 border border-zinc-800/50 hover:border-emerald-500/30 transition-all p-8 flex flex-col justify-between"
-          >
-             <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-900/20 blur-[50px] rounded-full pointer-events-none" />
-            <div>
-              <Sparkles className="w-8 h-8 text-emerald-400 mb-4" />
-              <h3 className="text-xl font-medium text-white mb-2">Reflexologia Podal</h3>
-              <p className="text-zinc-400 text-sm">Estímulo de pontos vitais nos pés que reequilibram a energia de todo o corpo.</p>
-            </div>
-            <div className="w-full mt-6">
-                <WhatsAppButton buttonLocation="bento_reflexologia" label="Consultar" className="w-full py-2.5 text-sm" />
-            </div>
-          </motion.div>
-
-           {/* Card 4: Destaque Menor (Ocupa 2 colunas no Desktop) */}
-           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
-            className="md:col-span-2 relative rounded-3xl overflow-hidden group bg-zinc-900 border border-zinc-800/50 hover:border-emerald-500/30 transition-all flex items-center p-8"
-          >
-            <div className="z-10 flex-1">
-              <h3 className="text-2xl font-medium text-white mb-2">Massagem Relaxante Clássica</h3>
-              <p className="text-zinc-300 mb-6 max-w-md">O protocolo definitivo para desconectar a mente e aliviar a carga de estresse do dia a dia.</p>
-              <div className="w-fit">
-                 <WhatsAppButton buttonLocation="bento_classica" label="Agendar Sessão" className="py-2.5 px-6 text-sm" />
-              </div>
-            </div>
-             <div className="hidden md:block flex-1 h-full relative ml-8 rounded-2xl overflow-hidden">
+        {/* Grid de Serviços Elegante */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {MENU_CONTENT.map((item, index) => (
+            <motion.div
+              key={item.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.15 }}
+              className="group relative rounded-[2rem] overflow-hidden bg-stone-900/40 border border-amber-900/30 hover:border-amber-600/50 transition-all duration-500 flex flex-col"
+            >
+              {/* Imagem de Fundo com Overlay Quente */}
+              <div className="absolute inset-0 z-0 h-2/3">
                 <img 
-                  src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=800&auto=format&fit=crop" 
-                  alt="Massagem Clássica" 
-                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  src={item.safeImage} 
+                  alt={item.title} 
+                  className="w-full h-full object-cover opacity-30 group-hover:opacity-40 transition-opacity duration-500"
                 />
-             </div>
-          </motion.div>
-
+                <div className="absolute inset-0 bg-gradient-to-b from-stone-950/10 via-stone-950/80 to-stone-950" />
+              </div>
+              
+              {/* Conteúdo do Card */}
+              <div className="relative z-10 p-8 flex flex-col h-full justify-end mt-32">
+                <div className="flex justify-between items-end mb-4 border-b border-amber-900/30 pb-4">
+                  <div>
+                    <h3 className="text-3xl font-serif text-orange-100">{item.title}</h3>
+                    <span className="text-amber-700 text-sm tracking-widest uppercase">{item.duration}</span>
+                  </div>
+                  <div className="text-2xl font-light text-amber-500">{item.price}</div>
+                </div>
+                
+                <p className="text-stone-300 font-light leading-relaxed mb-8 min-h-[80px]">
+                  {item.description}
+                </p>
+                
+                {/* Botão Integrado */}
+                <WhatsAppButton 
+                  buttonLocation={`menu_${item.id}`} 
+                  label="Reservar Experiência" 
+                  className="w-full !bg-amber-700 hover:!bg-amber-600 !shadow-[0_0_30px_-5px_rgba(180,83,9,0.5)] !text-stone-950"
+                />
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
   );
 }
+
