@@ -1,71 +1,90 @@
 "use client";
 
-import { Droplets, Heart, Lock, Gem } from "lucide-react";
-import { Montserrat } from "next/font/google";
+import { motion } from "framer-motion";
+import { Eye, Shield, HandHeart } from "lucide-react";
 
-const montserrat = Montserrat({ subsets: ["latin"], weight: ["300", "400", "500", "600"] });
-
-const features = [
+// ==========================================
+// A FÁBRICA: PILARES DA MARCA (WHITE FLAG)
+// ==========================================
+const FEATURES_DATA = [
   {
-    icon: Droplets,
-    title: "Óleos Importados",
-    description: "Essências premium para relaxamento total"
+    title: "Deleite Visual",
+    description: "Cada detalhe do nosso ambiente foi projetado para agradar aos olhos e iniciar o seu relaxamento antes mesmo do primeiro toque.",
+    icon: Eye,
   },
   {
-    icon: Heart,
-    title: "Atendimento Exclusivo",
-    description: "Terapeutas selecionadas rigorosamente"
+    title: "Privacidade Absoluta",
+    description: "Seu momento é sagrado. Garantimos discrição total e isolamento acústico para que sua experiência seja vivida com tranquilidade.",
+    icon: Shield,
   },
   {
-    icon: Lock,
-    title: "Ambiente Discreto",
-    description: "Sigilo e privacidade garantidos"
+    title: "Toque Humanizado",
+    description: "Profissionais selecionadas não apenas pela técnica impecável, mas pela capacidade de criar conexões genuínas e acolhedoras.",
+    icon: HandHeart,
   },
-  {
-    icon: Gem,
-    title: "Alto Padrão",
-    description: "Infraestrutura de luxo em Moema"
-  }
 ];
 
-export const Features = () => {
+export function Features() {
   return (
-    <section className={`bg-[#0a0806] py-20 border-b border-white/5 ${montserrat.className}`}>
+    <section className="relative w-full py-24 bg-stone-950 overflow-hidden font-sans">
       
-      {/* max-w-6xl garante o alinhamento com a Navbar e demais seções */}
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-          
-          {features.map((item, index) => (
-            <div key={index} className="flex flex-col items-center text-center group cursor-default">
-              
-              {/* O ANEL DA JOIA (Banhado a Ouro) */}
-              <div className="relative mb-6 p-5 rounded-full transition-all duration-500 group-hover:-translate-y-2">
-                
-                {/* 1. O Brilho de Fundo (Glow Pulsante Dourado) */}
-                <div className="absolute inset-0 rounded-full bg-[#d4af37]/5 blur-md animate-pulse group-hover:bg-[#d4af37]/20 transition-colors duration-500" />
-                
-                {/* 2. A Borda Metálica (O Aro de Ouro) */}
-                <div className="absolute inset-0 rounded-full border border-[#d4af37]/20 group-hover:border-[#d4af37]/60 shadow-[inset_0_0_15px_rgba(212,175,55,0.05)] transition-colors duration-500" />
+      {/* Luzes de Fundo para Continuidade do Layout Quente */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-lg h-64 bg-amber-900/10 blur-[120px] rounded-full pointer-events-none" />
 
-                {/* 3. O Ícone (A Pedra Preciosa) */}
-                <item.icon className="relative h-8 w-8 text-[#d4af37] group-hover:text-[#ffe58f] group-hover:drop-shadow-[0_0_12px_rgba(212,175,55,0.8)] transition-all duration-500" />
-              
-              </div>
-
-              {/* Título e Descrição */}
-              <h3 className="text-white font-semibold text-lg mb-2 tracking-wide group-hover:text-[#e5c76b] transition-colors duration-300">
-                {item.title}
-              </h3>
-              <p className="text-[#a89f91] text-sm max-w-[150px] leading-relaxed group-hover:text-white transition-colors duration-300">
-                {item.description}
-              </p>
-              
-            </div>
-          ))}
-          
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+        
+        {/* Cabeçalho da Seção */}
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl md:text-4xl font-serif text-orange-50 tracking-wide mb-4"
+          >
+            Nossos <span className="italic text-amber-600">Pilares</span>
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-stone-400 text-lg font-light"
+          >
+            A fundação de um atendimento que transcende a massagem tradicional.
+          </motion.p>
         </div>
+
+        {/* Grid de Cards (Elegante e Clean) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {FEATURES_DATA.map((feature, index) => {
+            const Icon = feature.icon;
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: index * 0.15 }}
+                className="group relative p-8 rounded-[2rem] bg-stone-900/40 backdrop-blur-sm border border-stone-800/50 hover:border-amber-700/50 transition-all duration-500 hover:shadow-[0_10px_40px_-15px_rgba(180,83,9,0.3)]"
+              >
+                {/* Ícone com Glow Interno */}
+                <div className="relative w-14 h-14 rounded-2xl bg-stone-950 border border-amber-900/30 flex items-center justify-center mb-6 shadow-inner group-hover:border-amber-600/50 transition-colors duration-300">
+                  <Icon className="w-6 h-6 text-amber-500" />
+                </div>
+
+                <h3 className="text-xl font-serif text-orange-100 mb-3">
+                  {feature.title}
+                </h3>
+                <p className="text-stone-400 font-light leading-relaxed">
+                  {feature.description}
+                </p>
+              </motion.div>
+            );
+          })}
+        </div>
+
       </div>
     </section>
   );
-};
+}
