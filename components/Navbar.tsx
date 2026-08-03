@@ -41,11 +41,11 @@ export function Navbar() {
         </div>
 
         {/* CTA Desktop & Integração Segura do WhatsAppButton */}
-        <div className="flex items-center gap-4 z-50">
+        <div className="hidden md:block z-50">
           <WhatsAppButton
             buttonLocation="navbar_btn_agendar"
             label="Agendar Sessão"
-            className="hidden md:flex py-2.5 px-6 text-sm !bg-amber-700 hover:!bg-amber-600 !text-stone-950"
+            className="py-2.5 px-6 text-sm !bg-amber-700 hover:!bg-amber-600 !text-stone-950"
           />
         </div>
         
