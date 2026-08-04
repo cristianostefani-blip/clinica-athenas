@@ -12,7 +12,7 @@ const HERO_CONTENT = {
   title_light: "Reconexão e",
   title_bold: "Descompressão", 
   description: "Um ambiente preparado para o seu deleite visual e corporal. Permita-se vivenciar protocolos exclusivos de alto padrão.",
-  bg_image: "/hero.jpeg", 
+  bg_image: "/hero.jpg", 
 };
 
 export function HeroSection() {
