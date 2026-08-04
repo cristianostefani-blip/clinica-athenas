@@ -28,13 +28,12 @@ export function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between">
         
-        {/* Identidade Visual - Área Preparada para a Logomarca */}
+        {/* Identidade Visual - Logo ampliada em 20% */}
         <div className="flex items-center">
           <img 
-            // Substitua a extensão (.png, .svg, .webp) de acordo com o arquivo que você subiu na pasta public
             src="/logo-athenas.png" 
             alt="Clínica Athenas" 
-            className="h-10 md:h-12 w-auto object-contain drop-shadow-md"
+            className="h-12 md:h-[3.5rem] w-auto object-contain drop-shadow-md transition-all duration-300"
           />
         </div>
 
