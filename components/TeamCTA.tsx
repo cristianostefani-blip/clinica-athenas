@@ -14,7 +14,7 @@ const CTA_CONTENT = {
 
 export function TeamCTA() {
   return (
-    <section className="relative w-full py-24 bg-stone-950 overflow-hidden flex items-center justify-center font-sans">
+    <section id="especialistas" className="relative w-full py-24 bg-stone-950 overflow-hidden flex items-center justify-center font-sans">
       
       {/* Efeito de Fundo - Glow Quente Subtil */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">

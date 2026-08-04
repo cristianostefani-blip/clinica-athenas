@@ -40,7 +40,7 @@ const MENU_CONTENT = [
 
 export function ServicesBento() {
   return (
-    <section className="relative w-full py-24 bg-stone-950 font-sans" id="experiencias">
+    <section id="experiencias" className="relative w-full py-24 bg-stone-950 font-sans">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         
         {/* Cabeçalho da Seção */}

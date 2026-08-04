@@ -46,7 +46,7 @@ export function Infrastructure() {
   };
 
   return (
-    <section className="relative w-full py-24 bg-stone-950 overflow-hidden font-sans">
+    <section id="sobre" className="relative w-full py-24 bg-stone-950 overflow-hidden font-sans">
       
       {/* Oculta a barra de rolagem mas mantém o scroll funcional */}
       <style dangerouslySetInnerHTML={{__html: `

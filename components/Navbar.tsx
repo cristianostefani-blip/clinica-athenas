@@ -89,9 +89,13 @@ export function Navbar() {
               <img src="/logo-athenas.png" alt="Clínica Athenas" className="h-16 w-auto opacity-80" />
               
               <div className="flex flex-col items-center gap-6 text-xl font-light text-stone-300">
-                <a href="#" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-amber-500 transition-colors">A Clínica</a>
-                <a href="#" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-amber-500 transition-colors">Experiências</a>
-                <a href="#" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-amber-500 transition-colors">Especialistas</a>
+                {/* 
+                  A MÁGICA DA ANCORAGEM:
+                  Apontando para os IDs que vamos garantir no Passo 2
+                */}
+                <a href="#sobre" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-amber-500 transition-colors">A Clínica</a>
+                <a href="#experiencias" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-amber-500 transition-colors">Experiências</a>
+                <a href="#especialistas" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-amber-500 transition-colors">Especialistas</a>
               </div>
 
               <WhatsAppButton
