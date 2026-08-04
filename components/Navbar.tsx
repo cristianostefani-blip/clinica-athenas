@@ -2,13 +2,11 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Sparkles } from "lucide-react";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // Efeito elegante: O Navbar fica transparente no topo e ganha Glassmorphism ao rolar a página
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -30,14 +28,14 @@ export function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between">
         
-        {/* Identidade Visual Luxuosa */}
-        <div className="flex items-center gap-3">
-          <div className="p-2.5 rounded-xl bg-amber-950/50 border border-amber-700/30">
-            <Sparkles className="w-5 h-5 text-amber-400" />
-          </div>
-          <span className="text-2xl font-serif font-medium text-orange-50 tracking-wide">
-            Athenas
-          </span>
+        {/* Identidade Visual - Área Preparada para a Logomarca */}
+        <div className="flex items-center">
+          <img 
+            // Substitua a extensão (.png, .svg, .webp) de acordo com o arquivo que você subiu na pasta public
+            src="/logo-athenas.png" 
+            alt="Clínica Athenas" 
+            className="h-10 md:h-12 w-auto object-contain drop-shadow-md"
+          />
         </div>
 
         {/* CTA Desktop & Integração Segura do WhatsAppButton */}
