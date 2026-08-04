@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 
 // 1. Configuração de SEO e Google Search Console
 export const metadata: Metadata = {
-  title: "Enjoy Spa | Oásis Urbano de Alta Performance",
-  description: "Uma experiência sensorial de alto padrão, projetada para desconectar sua mente e revitalizar seu corpo. Sigilo absoluto em Moema.",
+  title: "Athenas Massagens | Permita-se vivenciar protocolos exclusivos",
+  description: "Uma experiência sensorial de alto padrão, projetada para desconectar sua mente e revitalizar seu corpo.",
   verification: {
     google: "SUA_CHAVE_DE_VERIFICACAO_DO_SEARCH_CONSOLE_AQUI", // Ex: "1a2b3c4d5e6f7g8h9i0j"
   },
