@@ -14,6 +14,7 @@ const galleryImages = [
   "/infra-3.jpg",
   "/infra-4.jpg",
   "/infra-5.jpg",
+  "/infra-6.jpg",
 ];
 
 export function Infrastructure() {
