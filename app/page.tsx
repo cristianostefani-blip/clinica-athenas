@@ -3,7 +3,6 @@ import { HeroSection } from "@/components/HeroSection";
 import { Features } from "@/components/Features";
 import { Infrastructure } from "@/components/Infrastructure"; // NOVO CARROSSEL
 import { ServicesBento } from "@/components/ServicesBento";
-import { TeamSection } from "@/components/TeamSection";
 import { TeamCTA } from "@/components/TeamCTA";
 import { Footer } from "@/components/Footer"; 
 
@@ -15,7 +14,6 @@ export default function Home() {
       <Features />
       <Infrastructure />
       <ServicesBento />
-      <TeamSection />
       <TeamCTA />
       <Footer />
     </main>
