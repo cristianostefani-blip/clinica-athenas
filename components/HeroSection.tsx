@@ -33,11 +33,11 @@ export function HeroSection() {
       </div>
 
       {/* 2. Conteúdo Rolável (SCROLL OVERLAY) */}
-      {/* A margem negativa puxa este bloco para cima da imagem fixa */}
       <div className="relative z-10 w-full mt-[-100dvh] flex flex-col justify-end md:justify-center min-h-[100dvh]">
         
-        {/* Espaçador Invisível: Força o card para a base no Mobile. O usuário enxerga a modelo livremente na primeira dobra */}
-        <div className="h-[65dvh] md:h-[15dvh] w-full pointer-events-none" />
+        {/* O SEGREDO DO MOBILE: Espaçador ampliado para 82dvh. 
+            Isso empurra os textos para baixo, deixando apenas o topo do card visível. */}
+        <div className="h-[82dvh] md:h-[15dvh] w-full pointer-events-none" />
 
         <div className="w-full max-w-7xl mx-auto px-0 md:px-6 lg:px-8 pb-0 md:pb-12 md:pt-24 flex justify-center md:justify-start">
           
@@ -55,7 +55,7 @@ export function HeroSection() {
             {/* Puxador Visual Mobile */}
             <div className="w-12 h-1.5 bg-stone-500/60 rounded-full mb-6 md:hidden" />
 
-            {/* Badge */}
+            {/* Badge (Fica visível na primeira dobra) */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -66,7 +66,7 @@ export function HeroSection() {
               <span>{HERO_CONTENT.badge}</span>
             </motion.div>
 
-            {/* Tipografia */}
+            {/* Tipografia (Agora escondida abaixo da dobra no celular) */}
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-light tracking-tight text-orange-50 mb-3 md:mb-6 font-serif drop-shadow-lg leading-tight md:leading-tight">
               {HERO_CONTENT.title_light} <br className="hidden md:block" />
               <span className="italic font-semibold text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-amber-600 block mt-1 md:inline md:mt-0">
