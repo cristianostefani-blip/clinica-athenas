@@ -3,9 +3,6 @@
 import { useState, useEffect } from "react";
 import { MapPin, Clock, ChevronDown } from "lucide-react";
 
-// ==========================================
-// A FÁBRICA: DADOS DO RODAPÉ
-// ==========================================
 type Schedule = {
   day: number;
   label: string;
@@ -64,19 +61,16 @@ export function Footer() {
     <footer className="relative z-20 bg-stone-950 border-t border-amber-900/20 pt-16 pb-8 px-6 font-sans shadow-[0_-10px_40px_rgba(0,0,0,0.5)]">
       <div className="max-w-6xl mx-auto flex flex-col items-center relative z-30">
         
-        {/* Logo Centralizada */}
-        <div className="mb-12 opacity-90 hover:opacity-100 transition-opacity duration-300">
+        <div className="mb-12 hover:scale-105 transition-all duration-300">
+          {/* Removido opacity-90 e adicionado Glow Âmbar */}
           <img 
             src="/logo-athenas.png" 
             alt="Logo Clínica Athenas" 
-            className="h-16 w-auto object-contain drop-shadow-lg"
+            className="h-16 w-auto object-contain drop-shadow-[0_0_15px_rgba(245,158,11,0.5)]"
           />
         </div>
 
-        {/* Grade Principal */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 w-full max-w-5xl mb-16 text-center md:text-left">
-          
-          {/* BLOCO 1: SOBRE A ATHENAS */}
           <div className="flex flex-col items-center md:items-start space-y-3">
              <h3 className="text-orange-50 text-xl font-serif mb-2 tracking-wide">Clínica Athenas</h3>
              <p className="text-sm text-stone-300 font-light leading-relaxed max-w-xs">
@@ -85,7 +79,6 @@ export function Footer() {
              </p>
           </div>
 
-          {/* BLOCO 2: LOCALIZAÇÃO */}
           <div className="flex flex-col items-center md:items-start space-y-3">
             <h4 className="text-amber-600 text-sm font-medium tracking-widest uppercase mb-1">Localização</h4>
             <div className="flex items-start gap-3 text-stone-300 font-light text-sm">
@@ -97,21 +90,17 @@ export function Footer() {
             </div>
           </div>
 
-          {/* BLOCO 3: ATENDIMENTO INTELIGENTE */}
           <div className="flex flex-col items-center md:items-start space-y-3">
             <h4 className="text-amber-600 text-sm font-medium tracking-widest uppercase mb-1">Expediente</h4>
             
             {mounted ? (
               <div className="flex flex-col items-center md:items-start w-full">
-                
-                {/* Status Hoje */}
                 <button 
                   onClick={() => setShowAllHours(!showAllHours)}
                   className="flex items-start gap-3 group outline-none"
                 >
                   <Clock className="w-4 h-4 shrink-0 text-amber-500 mt-[2px]" />
                   <div className="flex flex-col items-start text-left">
-                    
                     <div className="flex items-center gap-2 mb-1">
                       <div className={`w-2 h-2 rounded-full ${isOpen ? "bg-emerald-500 animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.8)]" : "bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.8)]"}`} />
                       <span className={`text-xs font-medium uppercase tracking-wider ${isOpen ? "text-emerald-500" : "text-red-500"}`}>
@@ -128,10 +117,7 @@ export function Footer() {
                   </div>
                 </button>
 
-                {/* Dropdown com a grade completa */}
-                <div 
-                  className={`overflow-hidden transition-all duration-500 ease-in-out w-full ${showAllHours ? "max-h-[300px] mt-4 opacity-100" : "max-h-0 opacity-0"}`}
-                >
+                <div className={`overflow-hidden transition-all duration-500 ease-in-out w-full ${showAllHours ? "max-h-[300px] mt-4 opacity-100" : "max-h-0 opacity-0"}`}>
                   <div className="flex flex-col gap-2 p-4 bg-stone-900/80 backdrop-blur-md rounded-xl border border-amber-900/30 text-xs text-stone-300 font-light w-full max-w-[280px]">
                     {businessHours.map((schedule) => (
                       <div key={schedule.day} className={`flex justify-between ${schedule.day === new Date().getDay() ? "text-amber-500 font-medium" : ""}`}>
@@ -141,19 +127,15 @@ export function Footer() {
                     ))}
                   </div>
                 </div>
-
               </div>
             ) : (
               <div className="w-32 h-8 bg-stone-800 animate-pulse rounded" />
             )}
           </div>
-
         </div>
 
-        {/* Linha Divisória */}
         <div className="w-full h-px bg-gradient-to-r from-transparent via-amber-900/40 to-transparent mb-8" />
 
-        {/* Direitos Autorais e Assinatura */}
         <div className="flex flex-col items-center space-y-4 text-center w-full">
           <p className="text-[10px] md:text-xs text-stone-400 font-light tracking-wider uppercase">
             © {new Date().getFullYear()} Clínica Athenas. Todos os direitos reservados.

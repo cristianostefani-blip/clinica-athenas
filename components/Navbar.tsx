@@ -15,7 +15,6 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Bloqueia o scroll da página quando o menu mobile está aberto
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = "hidden";
@@ -42,11 +41,11 @@ export function Navbar() {
             <img 
               src="/logo-athenas.png" 
               alt="Clínica Athenas" 
-              className="h-12 md:h-[3.5rem] w-auto object-contain drop-shadow-md transition-all duration-300"
+              // Removido opacity-80 e adicionado Glow Âmbar
+              className="h-12 md:h-[3.5rem] w-auto object-contain drop-shadow-[0_0_15px_rgba(245,158,11,0.5)] transition-all duration-300"
             />
           </div>
 
-          {/* Botão Hamburguer (Mobile) */}
           <div className="flex md:hidden items-center z-50">
             <button 
               onClick={() => setIsMobileMenuOpen(true)}
@@ -56,7 +55,6 @@ export function Navbar() {
             </button>
           </div>
 
-          {/* CTA Desktop */}
           <div className="hidden md:block z-50">
             <WhatsAppButton
               buttonLocation="navbar_btn_agendar"
@@ -68,7 +66,6 @@ export function Navbar() {
         </div>
       </motion.nav>
 
-      {/* Overlay do Menu Mobile */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
@@ -86,13 +83,10 @@ export function Navbar() {
             </button>
 
             <div className="flex flex-col items-center gap-12">
-              <img src="/logo-athenas.png" alt="Clínica Athenas" className="h-16 w-auto opacity-80" />
+              {/* Removido opacity-80 e adicionado Glow Âmbar */}
+              <img src="/logo-athenas.png" alt="Clínica Athenas" className="h-16 w-auto drop-shadow-[0_0_20px_rgba(245,158,11,0.6)]" />
               
               <div className="flex flex-col items-center gap-6 text-xl font-light text-stone-300">
-                {/* 
-                  A MÁGICA DA ANCORAGEM:
-                  Apontando para os IDs que vamos garantir no Passo 2
-                */}
                 <a href="#sobre" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-amber-500 transition-colors">A Clínica</a>
                 <a href="#experiencias" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-amber-500 transition-colors">Experiências</a>
                 <a href="#especialistas" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-amber-500 transition-colors">Especialistas</a>

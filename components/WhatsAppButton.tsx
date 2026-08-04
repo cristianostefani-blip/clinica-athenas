@@ -8,7 +8,7 @@ import { Suspense } from "react";
 // ==========================================
 // A FÁBRICA: DADOS DA CLÍNICA ATHENAS
 // ==========================================
-const WHATSAPP_NUMBER = "5511999999999"; // Substitua pelo número real
+const WHATSAPP_NUMBER = "5511913247472"; // Substitua pelo número real
 const BASE_MESSAGE = "Olá! Gostaria de agendar uma sessão na Clínica Athenas."; // Sem UTMs aqui!
 
 interface WhatsAppButtonProps {
