@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Menu } from "lucide-react";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 
 export function Navbar() {
@@ -22,14 +23,14 @@ export function Navbar() {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 border-b font-sans ${
         isScrolled 
-          ? "bg-stone-950/80 backdrop-blur-xl border-amber-900/20 py-4 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.8)]" 
+          ? "bg-stone-950/90 backdrop-blur-xl border-amber-900/20 py-4 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.8)]" 
           : "bg-transparent border-transparent py-6"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between">
         
-        {/* Identidade Visual - Logo ampliada em 20% */}
-        <div className="flex items-center">
+        {/* Identidade Visual - Logo Ampliada */}
+        <div className="flex items-center z-50">
           <img 
             src="/logo-athenas.png" 
             alt="Clínica Athenas" 
@@ -37,7 +38,14 @@ export function Navbar() {
           />
         </div>
 
-        {/* CTA Desktop & Integração Segura do WhatsAppButton */}
+        {/* Menu Hamburguer (Mobile) */}
+        <div className="flex md:hidden items-center z-50">
+          <button className="p-2 text-stone-200 hover:text-amber-500 transition-colors focus:outline-none">
+            <Menu className="w-8 h-8" />
+          </button>
+        </div>
+
+        {/* CTA (Desktop) */}
         <div className="hidden md:block z-50">
           <WhatsAppButton
             buttonLocation="navbar_btn_agendar"

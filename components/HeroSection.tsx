@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
@@ -12,52 +11,51 @@ const HERO_CONTENT = {
   badge: "Experiências Sensoriais",
   title_light: "Reconexão e",
   title_bold: "Descompressão", 
-  description: "Um ambiente preparado para o seu deleite visual e corporal. Permita-se vivenciar protocolos exclusivos.",
+  description: "Um ambiente preparado para o seu deleite visual e corporal. Permita-se vivenciar protocolos exclusivos de alto padrão.",
   bg_image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=2000&auto=format&fit=crop", 
 };
 
 export function HeroSection() {
-  // Estado para controlar a expansão da gaveta no Mobile
-  const [isExpanded, setIsExpanded] = useState(false);
-
   return (
-    <section className="relative w-full min-h-[100dvh] flex flex-col overflow-hidden bg-stone-950 font-sans">
+    <section className="relative w-full bg-stone-950 font-sans">
       
-      {/* 1. Imagem de Fundo Nítida */}
-      <div className="absolute inset-0 z-0">
+      {/* 1. Imagem de Fundo (FIXA / STICKY) */}
+      <div className="sticky top-0 h-[100dvh] w-full z-0 overflow-hidden pointer-events-none">
         <img
           src={HERO_CONTENT.bg_image}
           alt="Experiência Athenas"
-          className="w-full h-full object-cover object-top md:object-center opacity-90 md:opacity-100"
+          className="w-full h-full object-cover object-[50%_25%] md:object-center opacity-90 md:opacity-100"
         />
         
-        {/* Gradiente Mobile focado apenas na base extrema */}
+        {/* Gradientes Protetores */}
         <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/20 to-transparent md:hidden" />
         <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-stone-950 via-stone-950/70 to-transparent w-3/4" />
       </div>
 
-      {/* 2. Container Principal */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto flex-1 flex flex-col justify-end md:justify-center px-0 md:px-6 lg:px-8 pb-0 md:pb-12 md:pt-32">
+      {/* 2. Conteúdo Rolável (SCROLL OVERLAY) */}
+      {/* A margem negativa puxa este bloco para cima da imagem fixa */}
+      <div className="relative z-10 w-full mt-[-100dvh] flex flex-col justify-end md:justify-center min-h-[100dvh]">
         
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="w-full md:max-w-2xl pt-4 pb-6 px-5 md:p-12 
-                     rounded-t-[2rem] md:rounded-[2.5rem] 
-                     backdrop-blur-xl bg-stone-950/70 md:bg-stone-950/40 
-                     border-t md:border border-amber-900/40 shadow-[0_-20px_40px_-15px_rgba(0,0,0,0.7)] md:shadow-2xl 
-                     flex flex-col items-center md:items-start text-center md:text-left mt-auto md:mt-0"
-        >
-          
-          {/* Header Interativo do Card (Mobile) */}
-          <div 
-            className="w-full flex flex-col items-center md:items-start cursor-pointer md:cursor-default"
-            onClick={() => setIsExpanded(!isExpanded)}
-          >
-            {/* Puxador (Drag Handle) */}
-            <div className="w-12 h-1.5 bg-stone-500/50 rounded-full mb-5 md:hidden transition-colors hover:bg-stone-400" />
+        {/* Espaçador Invisível: Força o card para a base no Mobile. O usuário enxerga a modelo livremente na primeira dobra */}
+        <div className="h-[65dvh] md:h-[15dvh] w-full pointer-events-none" />
 
+        <div className="w-full max-w-7xl mx-auto px-0 md:px-6 lg:px-8 pb-0 md:pb-12 md:pt-24 flex justify-center md:justify-start">
+          
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="w-full md:max-w-2xl pt-6 pb-16 px-5 md:p-12 
+                       rounded-t-[2.5rem] md:rounded-[2.5rem] 
+                       backdrop-blur-2xl bg-stone-950/80 md:bg-stone-950/40 
+                       border-t md:border border-amber-900/40 shadow-[0_-20px_50px_-15px_rgba(0,0,0,0.8)] md:shadow-2xl 
+                       flex flex-col items-center md:items-start text-center md:text-left"
+          >
+            
+            {/* Puxador Visual Mobile */}
+            <div className="w-12 h-1.5 bg-stone-500/60 rounded-full mb-6 md:hidden" />
+
+            {/* Badge */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -68,38 +66,32 @@ export function HeroSection() {
               <span>{HERO_CONTENT.badge}</span>
             </motion.div>
 
-            <h1 className="text-3xl md:text-6xl lg:text-7xl font-light tracking-tight text-orange-50 mb-2 md:mb-6 font-serif drop-shadow-lg leading-tight md:leading-tight">
+            {/* Tipografia */}
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-light tracking-tight text-orange-50 mb-3 md:mb-6 font-serif drop-shadow-lg leading-tight md:leading-tight">
               {HERO_CONTENT.title_light} <br className="hidden md:block" />
               <span className="italic font-semibold text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-amber-600 block mt-1 md:inline md:mt-0">
                 {HERO_CONTENT.title_bold}
               </span>
             </h1>
-          </div>
 
-          {/* Descrição Expansível no Mobile */}
-          <div 
-            className={`w-full overflow-hidden transition-all duration-500 ease-in-out md:max-h-96 md:opacity-100 ${
-              isExpanded ? "max-h-48 opacity-100 mt-3" : "max-h-0 opacity-0 mt-0"
-            }`}
-          >
-            <p className="text-sm md:text-xl text-stone-200 font-light max-w-xl mb-6 md:mb-10 leading-relaxed md:leading-relaxed tracking-wide drop-shadow-md">
+            <p className="text-base md:text-xl text-stone-200 font-light max-w-xl mb-8 md:mb-10 leading-relaxed md:leading-relaxed tracking-wide drop-shadow-md">
               {HERO_CONTENT.description}
             </p>
-          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.5 }}
-            className={`w-full md:w-auto transition-all duration-500 ${isExpanded ? "mt-0" : "mt-4"} md:mt-0`}
-          >
-            <WhatsAppButton 
-              buttonLocation="hero_section" 
-              label="Agendar Horário"
-              className="w-full md:w-auto !bg-amber-700 hover:!bg-amber-600 !shadow-[0_0_30px_-5px_rgba(180,83,9,0.6)] !text-stone-950 px-6 md:px-10 py-3.5 md:py-5 text-sm md:text-lg"
-            />
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+              className="w-full md:w-auto"
+            >
+              <WhatsAppButton 
+                buttonLocation="hero_section" 
+                label="Agendar Horário"
+                className="w-full md:w-auto !bg-amber-700 hover:!bg-amber-600 !shadow-[0_0_30px_-5px_rgba(180,83,9,0.6)] !text-stone-950 px-6 md:px-10 py-4 md:py-5 text-base md:text-lg"
+              />
+            </motion.div>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
