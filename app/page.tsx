@@ -1,19 +1,19 @@
 import { Navbar } from "@/components/Navbar";
 import { HeroSection } from "@/components/HeroSection";
 import { Features } from "@/components/Features";
+import { Infrastructure } from "@/components/Infrastructure"; // NOVO CARROSSEL
 import { ServicesBento } from "@/components/ServicesBento";
 import { TeamSection } from "@/components/TeamSection";
 import { TeamCTA } from "@/components/TeamCTA";
-// Importe o Footer que já existe na sua pasta (vamos atualizá-lo em breve se necessário)
 import { Footer } from "@/components/Footer"; 
 
 export default function Home() {
   return (
-    // selection:bg-emerald-500/30 garante que se o usuário selecionar um texto, a cor de fundo combine com a marca
-    <main className="min-h-screen bg-zinc-950 text-zinc-50 selection:bg-emerald-500/30 selection:text-white">
+    <main className="min-h-screen bg-stone-950 text-orange-50 selection:bg-amber-600/30 selection:text-white overflow-x-hidden">
       <Navbar />
       <HeroSection />
       <Features />
+      <Infrastructure />
       <ServicesBento />
       <TeamSection />
       <TeamCTA />
