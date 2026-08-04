@@ -34,7 +34,7 @@ const MENU_CONTENT = [
     duration: "120 min",
     description: "A nossa assinatura máxima. Uma jornada sensorial completa combinando todas as técnicas da casa em um ambiente preparado exclusivamente para você.",
     icon: Sparkles,
-    safeImage: "/experiencia-athenas.jpg"
+    safeImage: "/athenas.jpg"
   }
 ];
 
