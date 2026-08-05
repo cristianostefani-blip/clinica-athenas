@@ -14,7 +14,7 @@ const FEATURES_DATA = [
   },
   {
     title: "Privacidade Absoluta",
-    description: "Seu momento é sagrado. Garantimos discrição total e isolamento acústico para que sua experiência seja vivida com tranquilidade.",
+    description: "Seu momento é sagrado. Garantimos discrição total para que sua experiência seja vivida com tranquilidade.",
     icon: Shield,
   },
   {

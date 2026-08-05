@@ -78,7 +78,7 @@ export function Infrastructure() {
               </h3>
               
               <p className="text-stone-300 text-base md:text-lg font-light leading-relaxed mb-10">
-                Desenhado para ser o seu santuário urbano. Nossa infraestrutura combina design sensorial, acústica impecável e iluminação intimista para garantir que sua única preocupação seja relaxar e se desconectar do mundo exterior.
+                Desenhado para ser o seu Spa urbano. Nossa infraestrutura combina design sensorial  e iluminação intimista para garantir que sua única preocupação seja relaxar e se desconectar do mundo exterior.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">

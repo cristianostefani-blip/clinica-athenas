@@ -11,7 +11,7 @@ const HERO_CONTENT = {
   badge: "Experiências Sensoriais",
   title_light: "Reconexão e",
   title_bold: "Descompressão", 
-  description: "Um ambiente preparado para o seu deleite visual e corporal. Permita-se vivenciar protocolos exclusivos de alto padrão.",
+  description: "Um ambiente preparado para o seu deleite visual e corporal. Permita-se vivenciar protocolos exclusivos de bem estar e atendimento exclusivo.",
   bg_image: "/hero.jpg", 
 };
 
