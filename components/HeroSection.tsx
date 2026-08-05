@@ -26,14 +26,19 @@ export function HeroSection() {
           alt="Experiência Athenas"
           /* 
             ENGENHARIA DE ENQUADRAMENTO (PONTO FOCAL RESPONSIVO):
-            Mobile: 80% (X) puxa o olhar da modelo para dentro da tela. 20% (Y) levanta a foto.
-            Desktop (md): 60% (X) ajusta o rosto ao lado do card. 30% (Y) alinha verticalmente.
+            Mobile: 40% (X) e 40% (Y) centralizam a face e levantam o olhar para fora da área do texto.
+            Desktop: object-center trava a imagem perfeitamente no meio.
           */
-          className="w-full h-full object-cover object-[80%_20%] md:object-[60%_30%] opacity-90 md:opacity-100 transition-all duration-700"
+          className="w-full h-full object-cover object-[40%_40%] md:object-center opacity-95 md:opacity-100 transition-all duration-700"
         />
         
-        <div className="absolute inset-0 bg-gradient-to-t from-[#160B08] via-[#160B08]/30 to-transparent md:hidden" />
-        <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-[#160B08] via-[#160B08]/80 to-transparent w-3/4" />
+        {/* 
+            MÁGICA DA SOMBRA (GRADIENTE): 
+            Reduzimos a altura no Mobile (h-2/3) e a largura no Desktop (w-1/2).
+            Isso tira a sombra de cima do rosto da modelo, mantendo a nitidez perfeita.
+        */}
+        <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-[#160B08] via-[#160B08]/40 to-transparent md:hidden" />
+        <div className="hidden md:block absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-[#160B08] via-[#160B08]/40 to-transparent" />
       </div>
 
       {/* 2. CONTEÚDO ROLÁVEL: Sobrepõe a imagem fixa */}
