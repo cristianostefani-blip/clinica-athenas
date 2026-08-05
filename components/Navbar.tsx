@@ -31,7 +31,7 @@ export function Navbar() {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 border-b font-sans ${
           isScrolled 
-            ? "bg-stone-950/90 backdrop-blur-xl border-amber-900/20 py-4 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.8)]" 
+            ? "bg-[#160B08]/90 backdrop-blur-xl border-orange-900/20 py-4 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.8)]" 
             : "bg-transparent border-transparent py-6"
         }`}
       >
@@ -41,15 +41,15 @@ export function Navbar() {
             <img 
               src="/logo-athenas.png" 
               alt="Clínica Athenas" 
-              // Removido opacity-80 e adicionado Glow Âmbar
-              className="h-12 md:h-[3.5rem] w-auto object-contain drop-shadow-[0_0_15px_rgba(245,158,11,0.5)] transition-all duration-300"
+              // Glow calibrado para o tom Cobre/Laranja
+              className="h-12 md:h-[3.5rem] w-auto object-contain drop-shadow-[0_0_15px_rgba(194,65,12,0.5)] transition-all duration-300"
             />
           </div>
 
           <div className="flex md:hidden items-center z-50">
             <button 
               onClick={() => setIsMobileMenuOpen(true)}
-              className="p-2 text-stone-200 hover:text-amber-500 transition-colors focus:outline-none"
+              className="p-2 text-orange-100 hover:text-orange-500 transition-colors focus:outline-none"
             >
               <Menu className="w-8 h-8" />
             </button>
@@ -59,7 +59,7 @@ export function Navbar() {
             <WhatsAppButton
               buttonLocation="navbar_btn_agendar"
               label="Agendar Sessão"
-              className="py-2.5 px-6 text-sm !bg-amber-700 hover:!bg-amber-600 !text-stone-950"
+              className="py-2.5 px-6 text-sm !bg-orange-700 hover:!bg-orange-600 !text-orange-50"
             />
           </div>
           
@@ -73,29 +73,28 @@ export function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed inset-0 z-[999] bg-stone-950/95 backdrop-blur-3xl flex flex-col items-center justify-center font-sans"
+            className="fixed inset-0 z-[999] bg-[#160B08]/95 backdrop-blur-3xl flex flex-col items-center justify-center font-sans"
           >
             <button 
               onClick={() => setIsMobileMenuOpen(false)}
-              className="absolute top-8 right-6 p-2 text-stone-400 hover:text-amber-500 transition-colors"
+              className="absolute top-8 right-6 p-2 text-orange-200/60 hover:text-orange-500 transition-colors"
             >
               <X className="w-10 h-10" />
             </button>
 
             <div className="flex flex-col items-center gap-12">
-              {/* Removido opacity-80 e adicionado Glow Âmbar */}
-              <img src="/logo-athenas.png" alt="Clínica Athenas" className="h-16 w-auto drop-shadow-[0_0_20px_rgba(245,158,11,0.6)]" />
+              <img src="/logo-athenas.png" alt="Clínica Athenas" className="h-16 w-auto drop-shadow-[0_0_20px_rgba(194,65,12,0.6)]" />
               
-              <div className="flex flex-col items-center gap-6 text-xl font-light text-stone-300">
-                <a href="#sobre" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-amber-500 transition-colors">A Clínica</a>
-                <a href="#experiencias" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-amber-500 transition-colors">Experiências</a>
-                <a href="#especialistas" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-amber-500 transition-colors">Especialistas</a>
+              <div className="flex flex-col items-center gap-6 text-xl font-light text-orange-100/80">
+                <a href="#sobre" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-orange-500 transition-colors">A Clínica</a>
+                <a href="#experiencias" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-orange-500 transition-colors">Experiências</a>
+                <a href="#especialistas" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-orange-500 transition-colors">Especialistas</a>
               </div>
 
               <WhatsAppButton
                 buttonLocation="mobile_menu_agendar"
                 label="Agendar Agora"
-                className="mt-8 px-10 py-4 !bg-amber-700 !text-stone-950 text-lg"
+                className="mt-8 px-10 py-4 !bg-orange-700 !text-orange-50 text-lg hover:!bg-orange-600 transition-all"
               />
             </div>
           </motion.div>
