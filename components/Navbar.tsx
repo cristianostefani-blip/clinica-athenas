@@ -41,8 +41,8 @@ export function Navbar() {
             <img 
               src="/logo-athenas.png" 
               alt="Clínica Athenas" 
-              // Glow calibrado para o tom Cobre/Laranja
-              className="h-12 md:h-[3.5rem] w-auto object-contain drop-shadow-[0_0_15px_rgba(194,65,12,0.5)] transition-all duration-300"
+              // ENGENHARIA DE UI: Tamanho aumentado em ~25% (h-14 no mobile, h-[4.5rem] no desktop)
+              className="h-14 md:h-[4.5rem] w-auto object-contain drop-shadow-[0_0_15px_rgba(194,65,12,0.5)] transition-all duration-300"
             />
           </div>
 
@@ -83,7 +83,8 @@ export function Navbar() {
             </button>
 
             <div className="flex flex-col items-center gap-12">
-              <img src="/logo-athenas.png" alt="Clínica Athenas" className="h-16 w-auto drop-shadow-[0_0_20px_rgba(194,65,12,0.6)]" />
+              {/* Logo do menu mobile também ajustada (de h-16 para h-20) */}
+              <img src="/logo-athenas.png" alt="Clínica Athenas" className="h-20 w-auto drop-shadow-[0_0_20px_rgba(194,65,12,0.6)]" />
               
               <div className="flex flex-col items-center gap-6 text-xl font-light text-orange-100/80">
                 <a href="#sobre" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-orange-500 transition-colors">A Clínica</a>

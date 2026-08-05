@@ -24,14 +24,14 @@ export function HeroSection() {
         <img
           src={HERO_CONTENT.bg_image}
           alt="Experiência Athenas"
-          className="w-full h-full object-cover object-[50%_25%] md:object-center opacity-90 md:opacity-100"
+          /* 
+            ENGENHARIA DE ENQUADRAMENTO (PONTO FOCAL RESPONSIVO):
+            Mobile: 80% (X) puxa o olhar da modelo para dentro da tela. 20% (Y) levanta a foto.
+            Desktop (md): 60% (X) ajusta o rosto ao lado do card. 30% (Y) alinha verticalmente.
+          */
+          className="w-full h-full object-cover object-[80%_20%] md:object-[60%_30%] opacity-90 md:opacity-100 transition-all duration-700"
         />
         
-        {/* 
-            MÁGICA DA PALETA TERRACOTA AQUI:
-            Substituímos o 'stone-950' pelo '#160B08' nos gradientes. 
-            Isso funde a foto perfeitamente com a cor do restante do site.
-        */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#160B08] via-[#160B08]/30 to-transparent md:hidden" />
         <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-[#160B08] via-[#160B08]/80 to-transparent w-3/4" />
       </div>
@@ -56,7 +56,7 @@ export function HeroSection() {
                        flex flex-col items-center md:items-start text-center md:text-left"
           >
             
-            {/* Puxador Visual Mobile (Atualizado para Cobre) */}
+            {/* Puxador Visual Mobile */}
             <div className="w-12 h-1.5 bg-orange-900/60 rounded-full mb-6 md:hidden" />
 
             {/* Badge */}
@@ -88,7 +88,7 @@ export function HeroSection() {
               transition={{ delay: 0.4, duration: 0.5 }}
               className="w-full md:w-auto"
             >
-              {/* Botão alinhado à nova paleta quente */}
+              {/* Botão alinhado à nova paleta */}
               <WhatsAppButton 
                 buttonLocation="hero_section" 
                 label="Agendar Horário"
