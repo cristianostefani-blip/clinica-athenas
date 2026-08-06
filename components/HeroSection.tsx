@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image"; // 1. IMPORTAÇÃO DO MOTOR
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
@@ -19,24 +20,19 @@ export function HeroSection() {
   return (
     <section className="relative w-full font-sans">
       
-      {/* 1. O EFEITO CORTINA: Imagem 100% Fixa no fundo do navegador */}
+      {/* 1. O EFEITO CORTINA: O Container PAI precisa ser fixed ou relative para o "fill" funcionar */}
       <div className="fixed inset-0 w-full h-[100dvh] z-0 pointer-events-none">
-        <img
+        
+        {/* 2. APLICAÇÃO DO FILL COM PRIORITY PARA DESTRUIR O LCP */}
+        <Image
           src={HERO_CONTENT.bg_image}
           alt="Experiência Athenas"
-          /* 
-            ENGENHARIA DE ENQUADRAMENTO (PONTO FOCAL RESPONSIVO):
-            Mobile: 40% (X) e 40% (Y) centralizam a face e levantam o olhar para fora da área do texto.
-            Desktop: object-center trava a imagem perfeitamente no meio.
-          */
-          className="w-full h-full object-cover object-[40%_40%] md:object-center opacity-95 md:opacity-100 transition-all duration-700"
+          fill
+          priority // OBRIGATÓRIO NA PRIMEIRA DOBRA: ignora o lazy loading e carrega instantaneamente
+          sizes="100vw" // Diz ao Next.js que a imagem vai ocupar 100% da tela
+          className="object-cover object-[40%_40%] md:object-center opacity-95 md:opacity-100 transition-all duration-700"
         />
         
-        {/* 
-            MÁGICA DA SOMBRA (GRADIENTE): 
-            Reduzimos a altura no Mobile (h-2/3) e a largura no Desktop (w-1/2).
-            Isso tira a sombra de cima do rosto da modelo, mantendo a nitidez perfeita.
-        */}
         <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-[#160B08] via-[#160B08]/40 to-transparent md:hidden" />
         <div className="hidden md:block absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-[#160B08] via-[#160B08]/40 to-transparent" />
       </div>
@@ -44,10 +40,8 @@ export function HeroSection() {
       {/* 2. CONTEÚDO ROLÁVEL: Sobrepõe a imagem fixa */}
       <div className="relative z-10 w-full flex flex-col justify-end min-h-[100dvh]">
         
-        {/* Espaçador para esconder o texto e mostrar o rosto da modelo no Mobile */}
         <div className="h-[82dvh] md:h-[65dvh] w-full pointer-events-none" />
 
-        {/* O Card (A Borda da Cortina) */}
         <div className="w-full max-w-7xl mx-auto px-0 md:px-6 lg:px-8 pb-0 md:pb-12 flex justify-center md:justify-start">
           
           <motion.div
@@ -61,10 +55,8 @@ export function HeroSection() {
                        flex flex-col items-center md:items-start text-center md:text-left"
           >
             
-            {/* Puxador Visual Mobile */}
             <div className="w-12 h-1.5 bg-orange-900/60 rounded-full mb-6 md:hidden" />
 
-            {/* Badge */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -75,7 +67,6 @@ export function HeroSection() {
               <span>{HERO_CONTENT.badge}</span>
             </motion.div>
 
-            {/* Tipografia */}
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-light tracking-tight text-orange-50 mb-3 md:mb-6 font-serif drop-shadow-lg leading-tight md:leading-tight">
               {HERO_CONTENT.title_light} <br className="hidden md:block" />
               <span className="italic font-semibold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-700 block mt-1 md:inline md:mt-0">
@@ -93,7 +84,6 @@ export function HeroSection() {
               transition={{ delay: 0.4, duration: 0.5 }}
               className="w-full md:w-auto"
             >
-              {/* Botão alinhado à nova paleta */}
               <WhatsAppButton 
                 buttonLocation="hero_section" 
                 label="Agendar Horário"

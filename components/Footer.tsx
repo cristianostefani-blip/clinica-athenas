@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image"; // 1. INJEÇÃO DO MOTOR DE IMAGEM
 import { MapPin, Clock, ChevronDown } from "lucide-react";
 
 type Schedule = {
@@ -62,10 +63,12 @@ export function Footer() {
       <div className="max-w-6xl mx-auto flex flex-col items-center relative z-30">
         
         <div className="mb-12 hover:scale-105 transition-all duration-300">
-          {/* Glow da logo atualizado para tom de Cobre */}
-          <img 
+          {/* 2. NEXT/IMAGE COM DIMENSÕES DECLARADAS */}
+          <Image 
             src="/logo-athenas.png" 
-            alt="Logo Clínica Athenas" 
+            alt="Logo Clínica Athenas"
+            width={240}
+            height={64} 
             className="h-16 w-auto object-contain drop-shadow-[0_0_15px_rgba(194,65,12,0.5)]"
           />
         </div>
@@ -97,6 +100,7 @@ export function Footer() {
               <div className="flex flex-col items-center md:items-start w-full">
                 <button 
                   onClick={() => setShowAllHours(!showAllHours)}
+                  aria-expanded={showAllHours} // Atributo extra de acessibilidade
                   className="flex items-start gap-3 group outline-none"
                 >
                   <Clock className="w-4 h-4 shrink-0 text-orange-500 mt-[2px]" />
@@ -137,19 +141,20 @@ export function Footer() {
         <div className="w-full h-px bg-gradient-to-r from-transparent via-orange-900/40 to-transparent mb-8" />
 
         <div className="flex flex-col items-center space-y-4 text-center w-full">
-          <p className="text-[10px] md:text-xs text-orange-200/50 font-light tracking-wider uppercase">
+          {/* 3. OPACIDADE ELEVADA PARA 80% (APROVADO NO TESTE DE CONTRASTE) */}
+          <p className="text-[10px] md:text-xs text-orange-200/80 font-light tracking-wider uppercase">
             © {new Date().getFullYear()} Clínica Athenas. Todos os direitos reservados.
           </p>
           
-          <p className="text-[10px] md:text-xs text-orange-200/50 tracking-[0.2em] font-light">
+          <p className="text-[10px] md:text-xs text-orange-200/80 tracking-[0.2em] font-light">
+            {/* ARIA-LABEL REMOVIDO PARA EVITAR MISMATCH */}
             <a 
               href="https://cstefani-desenvolvedor.vercel.app" 
               target="_blank" 
               rel="noopener noreferrer"
-              aria-label="Acessar o site do desenvolvedor C.Stefani"
               className="hover:text-orange-500 transition-colors duration-300 group"
             >
-              <span className="text-orange-100/80 font-medium group-hover:underline underline-offset-4">
+              <span className="text-orange-100/90 font-medium group-hover:underline underline-offset-4">
                 C.Stefani
               </span> - Especialista em Soluções WEB
             </a>

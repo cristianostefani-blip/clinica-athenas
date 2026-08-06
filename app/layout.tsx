@@ -42,7 +42,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className="scroll-smooth">
       {/* O GTM injetado no Head automaticamente */}
-      <GoogleTagManager gtmId="GTM-M2HHB9BV" />
+      <GoogleTagManager gtmId="GTM-K87BKMGD" />
       
       {/* 
         Injetamos as variáveis de fonte Geist para funcionarem no Tailwind.

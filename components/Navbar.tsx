@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image"; // 1. IMPORTAÇÃO DO MOTOR DE IMAGEM
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
@@ -38,17 +39,21 @@ export function Navbar() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between">
           
           <div className="flex items-center z-50">
-            <img 
+            {/* 2. APLICAÇÃO COM DIMENSÕES EXPLÍCITAS E ARIA-LABEL ADICIONADO */}
+            <Image 
               src="/logo-athenas.png" 
               alt="Clínica Athenas" 
-              // ENGENHARIA DE UI: Tamanho aumentado em ~25% (h-14 no mobile, h-[4.5rem] no desktop)
+              width={240}
+              height={64}
               className="h-14 md:h-[4.5rem] w-auto object-contain drop-shadow-[0_0_15px_rgba(194,65,12,0.5)] transition-all duration-300"
             />
           </div>
 
           <div className="flex md:hidden items-center z-50">
+            {/* ARIA-LABEL ADICIONADO PARA ACESSIBILIDADE DE LEITORES DE TELA */}
             <button 
               onClick={() => setIsMobileMenuOpen(true)}
+              aria-label="Abrir menu de navegação"
               className="p-2 text-orange-100 hover:text-orange-500 transition-colors focus:outline-none"
             >
               <Menu className="w-8 h-8" />
@@ -77,14 +82,20 @@ export function Navbar() {
           >
             <button 
               onClick={() => setIsMobileMenuOpen(false)}
+              aria-label="Fechar menu de navegação"
               className="absolute top-8 right-6 p-2 text-orange-200/60 hover:text-orange-500 transition-colors"
             >
               <X className="w-10 h-10" />
             </button>
 
             <div className="flex flex-col items-center gap-12">
-              {/* Logo do menu mobile também ajustada (de h-16 para h-20) */}
-              <img src="/logo-athenas.png" alt="Clínica Athenas" className="h-20 w-auto drop-shadow-[0_0_20px_rgba(194,65,12,0.6)]" />
+              <Image 
+                src="/logo-athenas.png" 
+                alt="Clínica Athenas" 
+                width={240}
+                height={64}
+                className="h-20 w-auto drop-shadow-[0_0_20px_rgba(194,65,12,0.6)]" 
+              />
               
               <div className="flex flex-col items-center gap-6 text-xl font-light text-orange-100/80">
                 <a href="#sobre" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-orange-500 transition-colors">A Clínica</a>

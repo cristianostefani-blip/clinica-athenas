@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image"; // 1. IMPORTAÇÃO DO MOTOR DE IMAGEM
 import { motion } from "framer-motion";
 import { Droplets, Sparkles, Flame, Waves, HeartHandshake } from "lucide-react";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
@@ -10,7 +11,7 @@ import { WhatsAppButton } from "@/components/WhatsAppButton";
 const MENU_CONTENT = [
   {
     id: "athenas",
-    title: "Experiência Athenas",
+    title: "Athenas",
     price: "R$ 240",
     duration: "60 min",
     description: "Nossa assinatura exclusiva. Uma imersão que combina manobras fluidas e envolventes para proporcionar relaxamento intenso e desconexão total da rotina.",
@@ -57,7 +58,6 @@ const MENU_CONTENT = [
 
 export function ServicesBento() {
   return (
-
     <section id="experiencias" className="relative w-full py-24 bg-[#160B08] font-sans">
       
       {/* Glow de fundo em tom de cobre para dar profundidade */}
@@ -82,15 +82,14 @@ export function ServicesBento() {
             transition={{ delay: 0.1 }}
             className="text-orange-200/60 text-lg font-light"
           >
-            Escolha o seu nível de imersão. Cada protocolo é conduzido com discrição e técnica absoluta.
+            Escolha o seu nível de imersão.
           </motion.p>
         </div>
 
-        {/* Bento Grid - Ajustado para 5 itens (1 Destaque + 4 Menores) */}
+        {/* Bento Grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
           {MENU_CONTENT.map((item, index) => {
             const Icon = item.icon;
-            // O primeiro item (Athenas) fica gigante, os outros 4 dividem o espaço
             const isFeatured = index === 0;
 
             return (
@@ -104,17 +103,22 @@ export function ServicesBento() {
                   isFeatured ? "md:col-span-12 lg:col-span-12" : "md:col-span-6 lg:col-span-6"
                 }`}
               >
-                {/* 1. IMAGEM 100% NÍTIDA */}
-                <img 
+                {/* 
+                  2. APLICAÇÃO DO NEXT/IMAGE COM FILL E SIZES
+                  Aqui está a mágica da otimização para Grids Fluidos. 
+                */}
+                <Image 
                   src={item.safeImage} 
                   alt={item.title}
-                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out z-0"
+                  fill
+                  sizes={isFeatured ? "100vw" : "(max-width: 768px) 100vw, 50vw"}
+                  className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out z-0"
                 />
 
-                {/* 2. PROTEÇÃO DE TEXTO INTELIGENTE (Terracotta Gradient) */}
+                {/* PROTEÇÃO DE TEXTO INTELIGENTE (Terracotta Gradient) */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#160B08] via-[#160B08]/80 to-transparent opacity-95 z-10" />
 
-                {/* 3. CONTEÚDO DO CARD */}
+                {/* CONTEÚDO DO CARD */}
                 <div className="relative z-20 p-8 flex flex-col h-full justify-end">
                   
                   <div className="flex justify-between items-start mb-4">

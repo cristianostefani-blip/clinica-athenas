@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
+import Image from "next/image"; // 1. IMPORTAÇÃO DO MOTOR DE IMAGENS
 import { motion } from "framer-motion";
 import { ShieldCheck, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -110,6 +111,7 @@ export function Infrastructure() {
               {canScrollLeft && (
                 <button
                   onClick={() => scroll("left")}
+                  aria-label="Ver foto anterior do ambiente" // 2. CORREÇÃO DE ACESSIBILIDADE 
                   className="absolute left-3 top-1/2 -translate-y-1/2 z-20 text-orange-400 hover:text-orange-300 hover:scale-110 transition-all duration-300 drop-shadow-md outline-none"
                 >
                   <ChevronLeft className="w-10 h-10 stroke-[1.5]" />
@@ -119,6 +121,7 @@ export function Infrastructure() {
               {canScrollRight && (
                 <button
                   onClick={() => scroll("right")}
+                  aria-label="Ver próxima foto do ambiente" // 2. CORREÇÃO DE ACESSIBILIDADE
                   className="absolute right-3 top-1/2 -translate-y-1/2 z-20 text-orange-400 hover:text-orange-300 hover:scale-110 transition-all duration-300 drop-shadow-md outline-none"
                 >
                   <ChevronRight className="w-10 h-10 stroke-[1.5]" />
@@ -133,12 +136,16 @@ export function Infrastructure() {
                 {galleryImages.map((src, index) => (
                   <div
                     key={index}
+                    // A div pai tem a classe "relative", o que permite o "fill" funcionar perfeitamente
                     className="relative w-full aspect-[4/5] shrink-0 snap-center"
                   >
-                    <img
+                    {/* 3. NEXT/IMAGE COM FILL E SIZES CIRÚRGICO */}
+                    <Image
                       src={src}
                       alt={`Ambiente Athenas ${index + 1}`}
-                      className="w-full h-full object-cover"
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 480px"
+                      className="object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#160B08]/80 via-transparent to-transparent pointer-events-none" />
                   </div>
