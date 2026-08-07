@@ -8,7 +8,7 @@ import { MessageCircle } from "lucide-react";
 // A FÁBRICA: DADOS DE CONTATO (WHITE FLAG)
 // ==========================================
 const WHATSAPP_CONFIG = {
-  number: "5511999999999", // Substitua pelo número da Clínica
+  number: "5511913247472",
   defaultMessage: "Olá! Gostaria de agendar uma experiência na Clínica Athenas.",
 };
 
